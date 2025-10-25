@@ -11,59 +11,57 @@ public class CalculatorApp {
         Calculator calc = new Calculator();
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
-        
+
+        // print a welcome message
         System.out.println("===========================================");
         System.out.println("    Welcome to Simple Java Calculator!");
         System.out.println("===========================================");
+        int cont = 2;
         
         while (running) {
+            int choice;
+
+            double num1, num2, result;
+
+
+
+            System.out.print("Enter first number: ");
+            num1 = scanner.nextDouble();
+            System.out.print("Enter second number: ");
+            num2 = scanner.nextDouble();
+
             displayMenu();
             System.out.print("Enter your choice: ");
+            choice = scanner.nextInt();
+
+
             
             try {
-                int choice = scanner.nextInt();
-                
-                if (choice == 0) {
+                if (cont == 0) {
                     running = false;
                     System.out.println("Thank you for using the calculator. Goodbye!");
                     break;
                 }
-                
-                double num1, num2, result;
-                
+
+
+
                 switch (choice) {
                     case 1: // Addition
-                        System.out.print("Enter first number: ");
-                        num1 = scanner.nextDouble();
-                        System.out.print("Enter second number: ");
-                        num2 = scanner.nextDouble();
                         result = calc.add(num1, num2);
                         System.out.println("Result: " + num1 + " + " + num2 + " = " + result);
                         break;
                         
                     case 2: // Subtraction
-                        System.out.print("Enter first number: ");
-                        num1 = scanner.nextDouble();
-                        System.out.print("Enter second number: ");
-                        num2 = scanner.nextDouble();
                         result = calc.subtract(num1, num2);
                         System.out.println("Result: " + num1 + " - " + num2 + " = " + result);
                         break;
                         
                     case 3: // Multiplication
-                        System.out.print("Enter first number: ");
-                        num1 = scanner.nextDouble();
-                        System.out.print("Enter second number: ");
-                        num2 = scanner.nextDouble();
                         result = calc.multiply(num1, num2);
                         System.out.println("Result: " + num1 + " * " + num2 + " = " + result);
                         break;
                         
                     case 4: // Division
-                        System.out.print("Enter dividend: ");
-                        num1 = scanner.nextDouble();
-                        System.out.print("Enter divisor: ");
-                        num2 = scanner.nextDouble();
                         try {
                             result = calc.divide(num1, num2);
                             System.out.println("Result: " + num1 + " / " + num2 + " = " + result);
@@ -73,10 +71,6 @@ public class CalculatorApp {
                         break;
                         
                     case 5: // Modulo
-                        System.out.print("Enter dividend: ");
-                        num1 = scanner.nextDouble();
-                        System.out.print("Enter divisor: ");
-                        num2 = scanner.nextDouble();
                         try {
                             result = calc.modulo(num1, num2);
                             System.out.println("Result: " + num1 + " % " + num2 + " = " + result);
@@ -86,10 +80,6 @@ public class CalculatorApp {
                         break;
                         
                     case 6: // Power
-                        System.out.print("Enter base: ");
-                        num1 = scanner.nextDouble();
-                        System.out.print("Enter exponent: ");
-                        num2 = scanner.nextDouble();
                         result = calc.power(num1, num2);
                         System.out.println("Result: " + num1 + " ^ " + num2 + " = " + result);
                         break;
@@ -135,6 +125,8 @@ public class CalculatorApp {
                 scanner.nextLine(); // Clear the buffer
                 System.out.println();
             }
+            System.out.print("Do you want to continue? (1 for Yes / 0 for No): ");
+            cont = scanner.nextInt();
         }
         
         scanner.close();
